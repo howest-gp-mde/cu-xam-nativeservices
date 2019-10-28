@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XrnCourse.NativeServices.Pages.DevicePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView>
+                <TableSection Title="Device information">
+                    <TextCell Text="{Binding Info.Manufacturer}" Detail="Manufacturer" />
+                    <TextCell Text="{Binding Info.Model}" Detail="Model" />
+                    <TextCell Text="{Binding Info.ReleaseVersion}" Detail="Version" />
+                    <TextCell Text="{Binding Info.CanVibrate}" Detail="Can Vibrate?" />
+                </TableSection>
+            </TableView>
+            <Label Text="Sensors"></Label>
+            <ListView ItemsSource="{Binding Info.Sensors}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding . }" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
