@@ -11,7 +11,9 @@ namespace XrnCourse.NativeServices
         {
             InitializeComponent();
             
+            //register dependencies
             FreshIOC.Container.Register(DependencyService.Get<IDeviceInformationService>());
+            FreshIOC.Container.Register(DependencyService.Get<ISoundPlayer>());
 
             var mainview = FreshPageModelResolver.ResolvePageModel<MainViewModel>();
             MainPage = new FreshNavigationContainer(mainview);
