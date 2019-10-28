@@ -63,6 +63,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\IOSDeviceInformationService.cs" />
+    <Compile Include="Services\PlatformSoundPlayer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,5 +131,9 @@
       <Project>{9C40FAB5-4572-4C86-8B4F-5F388842F874}</Project>
       <Name>XrnCourse.NativeServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Sounds\guitar-m.mp3" />
   </ItemGroup>
 </Project>
