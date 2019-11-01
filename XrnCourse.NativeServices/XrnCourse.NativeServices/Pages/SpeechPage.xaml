@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XrnCourse.NativeServices.Pages.SpeechPage">
+    <ContentPage.Content>
+        <StackLayout IsEnabled="{Binding IsReady}">
+            <Label Text="Voice options" Margin="10, 10, 10, 0"></Label>
+            <Frame HasShadow="True" Margin="10, 0, 10, 10">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label>Volume :</Label>
+                        <Label Text="{Binding Volume}" />
+                    </StackLayout>
+                    <Slider Value="{Binding Volume}" Minimum="0" Maximum="1" MaximumTrackColor="#999" MinimumTrackColor="#999"></Slider>
+                    <StackLayout Orientation="Horizontal">
+                        <Label>Pitch :</Label>
+                        <Label Text="{Binding Pitch}" />
+                    </StackLayout>
+                    <Slider Value="{Binding Pitch}" Minimum="0" Maximum="2" MaximumTrackColor="#999" MinimumTrackColor="#999"></Slider>
+                </StackLayout>
+            </Frame>
+            <Frame HasShadow="True" Margin="10, 0, 10, 10">
+                <Button Text="What's the time?" Command="{Binding SayTimeCommand}" />
+            </Frame>
+            <Frame HasShadow="True" Margin="10, 0, 10, 10">
+                <StackLayout>
+                    <Editor Text="{Binding DictateText}" 
+                            x:Name="txtDictate"
+                            Placeholder="Jot down something for me to say"
+                            HeightRequest="100"
+                            VerticalOptions="Start"
+                            ></Editor>
+                    <Button Text="Say it!" Command="{Binding DictateCommand}"></Button>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

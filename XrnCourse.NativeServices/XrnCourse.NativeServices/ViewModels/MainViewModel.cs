@@ -11,12 +11,14 @@ namespace XrnCourse.NativeServices.ViewModels
 
         public ICommand OpenDevicePageCommand { get; private set; }
         public ICommand PlaySoundCommand { get; private set; }
+        public ICommand OpenSpeechPageCommand { get; private set; }
 
         public MainViewModel(ISoundPlayer soundPlayer)
         {
             _soundPlayer = soundPlayer;
             OpenDevicePageCommand = new Command(OpenDevicePage);
             PlaySoundCommand = new Command(PlaySound);
+            OpenSpeechPageCommand = new Command(OpenSpeechPage);
         }
 
         private async void OpenDevicePage()
@@ -27,6 +29,10 @@ namespace XrnCourse.NativeServices.ViewModels
         private async void PlaySound()
         {
             await _soundPlayer.PlaySound();
+        }
+        private async void OpenSpeechPage()
+        {
+            await CoreMethods.PushPageModel<SpeechViewModel>(true);
         }
     }
 }
