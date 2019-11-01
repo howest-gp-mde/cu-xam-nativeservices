@@ -10,6 +10,7 @@
             <Button Text="Show Device Information" Command="{Binding OpenDevicePageCommand}"></Button>
             <Button Text="Play Sound" Command="{Binding PlaySoundCommand}"></Button>
             <Button Text="Enter speech mode" Command="{Binding OpenSpeechPageCommand}"></Button>
+            <Button Text="Show toast" Command="{Binding ShowToastCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
