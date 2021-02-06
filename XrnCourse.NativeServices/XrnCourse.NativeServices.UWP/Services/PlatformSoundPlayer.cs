@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using XrnCourse.NativeServices.Domain.Services;
+using MediaElement = Windows.UI.Xaml.Controls.MediaElement;
 
 [assembly: Dependency(typeof(XrnCourse.NativeServices.UWP.Services.PlatformSoundPlayer))]
 
