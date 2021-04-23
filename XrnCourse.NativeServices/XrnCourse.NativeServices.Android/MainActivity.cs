@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Xamarin.Forms;
 using Plugin.Toasts;
+using XrnCourse.NativeServices.Droid.Services;
 
 namespace XrnCourse.NativeServices.Droid
 {
@@ -24,6 +25,7 @@ namespace XrnCourse.NativeServices.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            DependencyService.Register<DroidDeviceInformationService>();
             //register and init toast plugin
             DependencyService.Register<ToastNotification>();
             ToastNotification.Init(this, new PlatformOptions() { SmallIconDrawable = Android.Resource.Drawable.IcDialogInfo });

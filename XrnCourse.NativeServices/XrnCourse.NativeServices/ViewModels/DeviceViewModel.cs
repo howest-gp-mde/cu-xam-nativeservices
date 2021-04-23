@@ -1,4 +1,5 @@
 ﻿using FreshMvvm;
+using Xamarin.Forms;
 using XrnCourse.NativeServices.Domain;
 using XrnCourse.NativeServices.Domain.Services;
 

@@ -2,24 +2,22 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Essentials;
 using Xamarin.Forms;
+using XrnCourse.NativeServices.Domain.Services;
 
 namespace XrnCourse.NativeServices.ViewModels
 {
     public class SpeechViewModel : FreshBasePageModel
     {
-        private SpeechOptions speechOptions;
+        protected readonly ISpeechService _speechService;
 
-        public SpeechViewModel()
+        public SpeechViewModel(ISpeechService speechService)
         {
+            _speechService = speechService;
 
-            speechOptions = new SpeechOptions
-            {
-                Volume = 0.9f, // 90% volume by default
-                Pitch = 1.0f  // normal speaking pitch
-            };
-            
+            Volume = 0.9f; // 90% volume by default
+            Pitch = 1.0f;  // normal speaking pitch
+
             SayTimeCommand = new Command(SayTime);
             DictateCommand = new Command(Dictate);
             IsReady = true; //will enable controls by default
@@ -35,22 +33,24 @@ namespace XrnCourse.NativeServices.ViewModels
 
         public ICommand DictateCommand { get; private set; }
 
+        private float pitch;
         public float Pitch
         {
-            get { return speechOptions.Pitch.Value; }
+            get { return pitch; }
             set {
-                speechOptions.Pitch = value;
+                pitch = value;
                 RaisePropertyChanged(nameof(Pitch));
             }
         }
 
+        private float volume;
         public float Volume
         {
-            get { return speechOptions.Volume.Value; }
+            get { return volume; }
             set
             {
                 //ensure value is between 0 and 100%
-                speechOptions.Volume = Math.Max(Math.Min(value, 1.0f), 0.0f);
+                volume = Math.Max(Math.Min(value, 1.0f), 0.0f);
                 RaisePropertyChanged(nameof(Volume));
             }
         }
@@ -91,7 +91,7 @@ namespace XrnCourse.NativeServices.ViewModels
             try
             {
                 IsReady = false;
-                await TextToSpeech.SpeakAsync(text, speechOptions);
+                await _speechService.Talk(text, Volume, Pitch);
             }
             catch (Exception ex)
             {

@@ -6,10 +6,12 @@ using Xamarin.Forms;
 using XrnCourse.NativeServices.Domain;
 using XrnCourse.NativeServices.Domain.Services;
 
+//registreren
 [assembly: Dependency(typeof(XrnCourse.NativeServices.Droid.Services.DroidDeviceInformationService))]
 
 namespace XrnCourse.NativeServices.Droid.Services
 {
+    
     internal class DroidDeviceInformationService : IDeviceInformationService
     {
         public DeviceInformation GetDeviceInfo()

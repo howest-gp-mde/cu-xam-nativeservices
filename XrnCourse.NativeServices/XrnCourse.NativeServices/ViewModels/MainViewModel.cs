@@ -10,13 +10,16 @@ namespace XrnCourse.NativeServices.ViewModels
     {
         private readonly ISoundPlayer _soundPlayer;
 
+        private readonly IToastNotificator _toastNotificator;
+
         public ICommand OpenDevicePageCommand { get; private set; }
         public ICommand PlaySoundCommand { get; private set; }
         public ICommand OpenSpeechPageCommand { get; private set; }
         public ICommand ShowToastCommand { get; private set; }
 
-        public MainViewModel(ISoundPlayer soundPlayer)
+        public MainViewModel(ISoundPlayer soundPlayer, IToastNotificator toastNotificator)
         {
+            _toastNotificator = toastNotificator;
             _soundPlayer = soundPlayer;
             OpenDevicePageCommand = new Command(OpenDevicePage);
             PlaySoundCommand = new Command(PlaySound);
@@ -43,7 +46,6 @@ namespace XrnCourse.NativeServices.ViewModels
         {
             //see https://github.com/EgorBo/Toasts.Forms.Plugin for usage
             //of this Toasts plugin
-            var notificator = DependencyService.Get<IToastNotificator>();
 
             var options = new NotificationOptions()
             {
@@ -60,7 +62,7 @@ namespace XrnCourse.NativeServices.ViewModels
                 }
             };
 
-            await notificator.Notify(options);
+            await _toastNotificator.Notify(options);
 
         }
     }
